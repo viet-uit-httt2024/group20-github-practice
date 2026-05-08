@@ -1,8 +1,10 @@
 # ============================================================
 #  utils.py  –  Người D: Validate input & Format output
-#  COMMIT 2: Thêm get_operator() và format_number()
+#  COMMIT 3: Thêm print_header() và print_separator() cho giao diện
 # ============================================================
 
+
+# ── NHÓM 1: Nhập dữ liệu có validate ──────────────────────
 
 def get_number(prompt: str) -> float:
     """
@@ -31,6 +33,20 @@ def get_operator(prompt: str) -> str:
         print(f"  ⚠  Toán tử không hợp lệ! Chỉ chấp nhận: +  -  *  /\n")
 
 
+def get_non_empty_string(prompt: str) -> str:
+    """
+    Nhập chuỗi không được để trống.
+    Dùng cho tìm kiếm từ khoá.
+    """
+    while True:
+        value = input(prompt).strip()
+        if value:
+            return value
+        print("  ⚠  Không được để trống!\n")
+
+
+# ── NHÓM 2: Định dạng số ──────────────────────────────────
+
 def format_number(n: float) -> str:
     """
     Định dạng số để hiển thị đẹp hơn.
@@ -40,3 +56,31 @@ def format_number(n: float) -> str:
     if n == int(n):
         return str(int(n))
     return f"{n:.4f}".rstrip("0")
+
+
+def format_expression(a: float, op: str, b: float, result: float) -> str:
+    """
+    Tạo chuỗi biểu thức hoàn chỉnh để lưu và hiển thị.
+    Ví dụ: 3 + 4 = 7
+    """
+    return f"{format_number(a)} {op} {format_number(b)} = {format_number(result)}"
+
+
+# ── NHÓM 3: Giao diện dòng lệnh ───────────────────────────
+
+def print_separator(char: str = "─", length: int = 45) -> None:
+    """In một đường kẻ ngang phân cách."""
+    print(char * length)
+
+
+def print_header(title: str) -> None:
+    """
+    In tiêu đề có viền bao quanh.
+    Ví dụ:
+    ═════════════════════════════════════════════
+      THỰC HIỆN PHÉP TÍNH
+    ═════════════════════════════════════════════
+    """
+    print_separator("═")
+    print(f"  {title}")
+    print_separator("═")
