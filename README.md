@@ -1,4 +1,8 @@
 # group20-github-practice
+NHÓM 20 - IS208.Q22.2
+Project: Máy Tính Mini
+
+
 Thành viên:
 1. Trương Quang Việt (24522003)
 2. Hồ Nguyễn Mai Thy (24521759)
